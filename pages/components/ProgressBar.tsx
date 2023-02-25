@@ -15,10 +15,11 @@ const ProgressBar = ({
   const breakPoint = (700 / duration) * 84;
 
   const moveProgress = (e: React.MouseEvent<HTMLSpanElement>) => {
+    const event = e.target as HTMLSpanElement;
+
     const progressBarWidth =
-      e.target.getBoundingClientRect().right -
-      e.target.getBoundingClientRect().x;
-    const point = e.clientX - e.target.getBoundingClientRect().x;
+      event.getBoundingClientRect().right! - event.getBoundingClientRect().x!;
+    const point = e.clientX - event.getBoundingClientRect().x;
     const selectTime = (point / progressBarWidth) * duration;
     playerRef.current.seekTo(selectTime);
   };
