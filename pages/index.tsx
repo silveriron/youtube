@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { Inter } from "next/font/google";
-import YoutubePlayer from "./components/YoutubePlayer";
+import YoutubePlayer from "../components/YoutubePlayer";
 
 const inter = Inter({ subsets: ["latin"] });
 
