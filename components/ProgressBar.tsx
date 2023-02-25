@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 
 interface ProgressBarProps {
   duration: number;
@@ -6,13 +6,28 @@ interface ProgressBarProps {
   playerRef: React.MutableRefObject<any>;
 }
 
+const getProgress = (
+  curruntTime: number,
+  duration: number,
+  progressBarRef: React.RefObject<HTMLSpanElement>
+): number => {
+  const rect = progressBarRef.current?.getBoundingClientRect();
+  console.log(rect);
+  if (rect) {
+    return rect.x;
+  } else {
+    return 0;
+  }
+};
+
 const ProgressBar = ({
   duration,
   curruntTime,
   playerRef,
 }: ProgressBarProps) => {
-  const progress = (curruntTime / duration) * 84;
-  const breakPoint = (700 / duration) * 84;
+  const progressBarRef = useRef<HTMLSpanElement>(null);
+  const progress = (curruntTime / duration) * 100;
+  const breakPoint = (700 / duration) * 100;
 
   const moveProgress = (e: React.MouseEvent<HTMLSpanElement>) => {
     const event = e.target as HTMLSpanElement;
@@ -32,20 +47,22 @@ const ProgressBar = ({
       <span
         className="border-white border-solid border-t-2 cursor-pointer top-3 z-10 w-10/12 h-1 absolute left-12"
         onClick={moveProgress}
-      ></span>
-      <span
-        className=" w-1 h-3 bg-white absolute top-2"
-        style={{ left: `${breakPoint + 9}%` }}
-      ></span>
-      <span
-        className="rounded-full w-3 h-3 bg-white absolute top-2"
-        style={{ left: `${progress + 8}%` }}
-      ></span>
-      <span
-        className="w-3 h-3 text-white absolute text-xl top-6"
-        style={{ left: `${progress + 7.7}%` }}
+        ref={progressBarRef}
       >
-        ▲
+        <span
+          className=" w-1 h-3 bg-white absolute z-10"
+          style={{ left: `${breakPoint + 1}%`, top: -6 }}
+        ></span>
+        <span
+          className="rounded-full w-3 h-3 bg-white absolute"
+          style={{ left: `${progress}%`, top: -6 }}
+        ></span>
+        <span
+          className="w-3 h-3 text-white absolute text-xl"
+          style={{ left: `${progress - 0.5}%`, top: 3 }}
+        >
+          ▲
+        </span>
       </span>
     </div>
   );

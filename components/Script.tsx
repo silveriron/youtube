@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 const page1 = (
   <div className="bg-gray-800 w-5/6 mx-auto p-4 rounded-md">
-    <h2 className="text-center m-8 text-2xl"></h2>
+    <h2 className="text-center m-8 text-2xl">전체요약</h2>
     <div>
       <h3 className="font-bold text-lg mb-3">
         1) 4~5% 나스닥 다시 최저점으로 하락 중
@@ -31,7 +31,7 @@ const page1 = (
 const page2 = (
   <div className="bg-gray-800 w-5/6 mx-auto p-4 rounded-md">
     <div>
-      <h3 className="font-bold text-lg mb-3">
+      <h3 className="font-bold text-xl mb-3">
         보통 실업률 감소를 목표했던 중앙은행 이번엔 다르다.
       </h3>
       <ul>

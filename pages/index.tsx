@@ -13,7 +13,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="max-w-lg h-full mx-auto bg-black">
+      <div className="max-w-lg h-full mx-auto pt-10 bg-black">
         <YoutubePlayer />
       </div>
     </>
