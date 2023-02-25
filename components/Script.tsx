@@ -60,7 +60,7 @@ const Script = ({ curruntTime }: ScriptProps) => {
     }
   }, [curruntTime]);
 
-  return <div>{script}</div>;
+  return <div className="h-full">{script}</div>;
 };
 
 export default Script;
